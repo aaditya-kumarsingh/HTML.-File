@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.ytimg.com/vi/DehnC9iM1so/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(106, 17, 203, 0.8);
+            color: white;
+            border-radius: 8px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+
+        /* Timeline Box Styling */
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px auto;
+            width: 95%;
+            justify-content: space-around;
+        }
+
+        .timeline .section {
+            flex: 0 0 30%;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .timeline .section:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline .section-box {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .timeline .section h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .timeline .section p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        /* Custom Background Colors for Each Section */
+        .store-section {
+            background-color: #f2a2a2;
+        }
+
+        .cutting-section {
+            background-color: #a2c2f2;
+        }
+
+        .production-section {
+            background-color: #f2e4a2;
+        }
+
+        .quality-section {
+            background-color: #a2f2a2;
+        }
+
+        .finishing-section {
+            background-color: #f2a2f2;
+        }
+
+        .dispatch-section {
+            background-color: #a2f2d1;
+        }
+
+        /* Login Page */
+        .login-container {
+            width: 300px;
+            margin: 20px auto 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-container h2 {
+            color: #333;
+        }
+        .login-container input,
+        .login-container select,
+        .login-container button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-container button {
+            background-color: #6a11cb;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Dashboard Page */
+        .container {
+            display: none;
+            width: 95%;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dashboard Header Above Login Page -->
+<div class="header">
+    <img src="https://th.bing.com/th/id/OIP.vzfHF-35qkkGWKmyWAihnAAAAA?rs=1&pid=ImgDetMain" alt="Company Logo">
+    <h2>Welcome to the Gram Trang Technologies</h2>
+    <h3>A Techno-Innovation & Entrepreneurship Outreach of Centurion University.</h3>
+    <h4>GRAMTRANG APPAREL CLUSTER VIZIANAGARAM</h4>
+    
+    <!-- New Three Sections Added -->
+    <div class="timeline">
+        <div class="info-box">
+            <h3>Employee Members</h3>
+            <p>Total: 300</p>
+            <select id="Employee Members">
+                <option value="200">200+</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+            </select>
+
+        </div>
+        <div class="info-box">
+            <h3>Total Machines</h3>
+            <p>Total: 200</p>
+            <select id="Employee Members">
+                <option value="100">100+</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+            </select>
+        </div>
+        <div class="info-box">
+            <h3>Total Columns</h3>
+            <p>4 Girls, 7 Men (Total: 12)</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Timeline Sections (Row Layout) for Login (No Links) -->
+    <div class="timeline" id="loginPage">
+        <div class="section store-section">
+            <h2>Store Section</h2>
+            <p>store details.</p>
+        </div>
+        <div class="section cutting-section">
+            <h2>Cutting Section</h2>
+            <p> cutting details.</p>
+        </div>
+        <div class="section production-section">
+            <h2>Production Section</h2>
+            <p>production data.</p>
+        </div>
+        <div class="section quality-section">
+            <h2>Quality Section</h2>
+            <p> quality details.</p>
+        </div>
+        <div class="section finishing-section">
+            <h2>Finishing Section</h2>
+            <p>finishing data.</p>
+        </div>
+        <div class="section dispatch-section">
+            <h2>Dispatch Section</h2>
+            <p> dispatch records.</p>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container" id="loginFormPage">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+
+            <label for="role">Role</label>
+            <select id="role">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+
+            <button type="button" onclick="validateLogin()">Login</button>
+        </form>
+    </div>
+
+    <!-- Dashboard Page (with Links) -->
+<div class="container" id="dashboardPage">
+    <div class="header">
+        <img src="https://th.bing.com/th/id/OIP.vzfHF-35qkkGWKmyWAihnAAAAA?rs=1&pid=ImgDetMain" alt="Company Logo">
+        <h3>GRAMTRANG APPAREL CLUSTER VIZIANAGARAM</h3>
+        <p>Guidance by Suman Kumar Singh</p>
+    </div>
+
+    <div class="timeline">
+        <div class="section store-section" onclick="showStoreDetails()">
+            <a href="javascript:void(0)">
+                <div class="section-box">
+                    <h2>Store Section</h2>
+                    <p>Click to view store details.</p>
+                </div>
+            </a>
+        </div>
+        <div class="section cutting-section">
+            <a href="cutting.html">
+                <div class="section-box">
+                    <h2>Cutting Section</h2>
+                    <p>Click to view cutting details.</p>
+                </div>
+            </a>
+        </div>
+        <div class="section production-section">
+            <a href="production.html">
+                <div class="section-box">
+                    <h2>Production Section</h2>
+                    <p>Click to view production data.</p>
+                </div>
+            </a>
+        </div>
+        <div class="section quality-section">
+            <a href="quality.html">
+                <div class="section-box">
+                    <h2>Quality Section</h2>
+                    <p>Click to view quality details.</p>
+                </div>
+            </a>
+        </div>
+        <div class="section finishing-section">
+            <a href="finishing.html">
+                <div class="section-box">
+                    <h2>Finishing Section</h2>
+                    <p>Click to view finishing data.</p>
+                </div>
+            </a>
+        </div>
+        <div class="section dispatch-section">
+            <a href="dispatch.html">
+                <div class="section-box">
+                    <h2>Dispatch Section</h2>
+                    <p>Click to view dispatch records.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Store Details Section (hidden initially) -->
+    <div id="store-details" class="details-container" style="display: none;">
+        <button class="close-btn" onclick="closeStoreDetails()">X</button>
+        <h2>Store Details</h2>
+
+        <!-- Store Data Form -->
+        <form>
+            <br>
+            <!-- Buyer's Name -->
+            <label for="buyer-name">Buyer's Name</label>
+            <select id="buyer-name">
+                <option value="buyer1">Buyer A</option>
+                <option value="buyer2">Buyer B</option>
+                <option value="buyer3">Buyer C</option>
+                <option value="buyer4">Buyer D</option>
+            </select>
+            <br>
+             <br>
+            <!-- Style Number -->
+            <label for="style-number">Style Number</label>
+            <input type="text" id="style-number" min="1" max="5000">
+            <br>
+             
+             <br>
+            <!-- Colour -->
+            <label for="colour">Colour</label>
+            <select id="colour">
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="black">Black</option>
+                <option value="white">White</option>
+                <option value="orange">Orange</option>
+                <option value="purple">Purple</option>
+                <option value="brown">Brown</option>
+                <option value="pink">Pink</option>
+            </select>
+                <br>
+                
+                 <br>
+            <!-- Total Quantity -->
+            <label for="total-quantity">Total Quantity</label>
+            <input type="number" id="total-quantity" min="1" max="5000">
+                <br> 
+                 <br>
+            <!-- Total Fabric Received -->
+            <label for="fabric-received">Total Fabric Received</label>
+            <input type="number" id="meter-quantity" min="1" max="5000">
+                <br>
+                 <br>
+            <!-- Bottom -->
+            <label for="bottom">Bottom</label>
+            <input type="number" id="bottom" min="1" max="1000">
+                  <br>
+                   <br>
+            <!-- Main Label -->
+            <label for="main-label">Main Label</label>
+            <select id="main-label">
+                <option value="label1">Label 1</option>
+                <option value="label2">Label 2</option>
+                <option value="label3">Label 3</option>
+            </select>
+                <br>
+                 <br>
+            <!-- Wash Care Level -->
+            <label for="wash-care-level">Wash Care Level</label>
+            <input type="number" id="wash-care-level" min="1" max="1000">
+              <br>
+               <br>
+            <!-- Main Tag -->
+            <label for="main-tag">Main Tag</label>
+            <select id="main-tag">
+                <option value="tag1">Tag 1</option>
+                <option value="tag2">Tag 2</option>
+                <option value="tag3">Tag 3</option>
+            </select>
+                  <br>
+                   <br>
+            <!-- Thread -->
+            <label for="thread">Thread</label>
+            <input type="number" id="thread" min="1" max="1000">
+                   <br>
+                   
+                <br>
+            <!-- Packing Material -->
+            <label for="packing-material">Packing Material</label>
+            <input type="number" id="packing-material" min="1" max="1000">
+                 <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bottom Section for Graphs -->
+    <div class="bottom-section">
+        <h2>All Sections Data</h2>
+        
+        <!-- Store Section Graph -->
+        <div class="graph-container">
+            <h4>Store Section Graph</h4>
+            <canvas id="store-graph"></canvas>
+        </div>
+
+        <!-- Cutting Section Graph -->
+        <div class="graph-container">
+            <h4>Cutting Section Graph</h4>
+            <canvas id="cutting-graph"></canvas>
+        </div>
+
+        <!-- Production Section Graph -->
+        <div class="graph-container">
+            <h4>Production Section Graph</h4>
+            <canvas id="production-graph"></canvas>
+        </div>
+
+        <!-- Quality Section Graph -->
+        <div class="graph-container">
+            <h4>Quality Section Graph</h4>
+            <canvas id="quality-graph"></canvas>
+        </div>
+
+        <!-- Finishing Section Graph -->
+        <div class="graph-container">
+            <h4>Finishing Section Graph</h4>
+            <canvas id="finishing-graph"></canvas>
+        </div>
+
+        <!-- Dispatch Section Graph -->
+        <div class="graph-container">
+            <h4>Dispatch Section Graph</h4>
+            <canvas id="dispatch-graph"></canvas>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Show Store Details
+    function showStoreDetails() {
+        document.getElementById('store-details').style.display = 'block'; // Show the section
+    }
+
+    // Close Store Details
+    function closeStoreDetails() {
+        document.getElementById('store-details').style.display = 'none'; // Hide the section
+    }
+
+    // Chart.js for All Section Graphs
+var storeCtx = document.getElementById('store-graph').getContext('2d');
+var cuttingCtx = document.getElementById('cutting-graph').getContext('2d');
+var productionCtx = document.getElementById('production-graph').getContext('2d');
+var qualityCtx = document.getElementById('quality-graph').getContext('2d');
+var finishingCtx = document.getElementById('finishing-graph').getContext('2d');
+var dispatchCtx = document.getElementById('dispatch-graph').getContext('2d');
+
+// 1. Store Section - Bar Graph
+var storeChart = new Chart(storeCtx, {
+    type: 'bar',
+    data: {
+        labels: ['2024-06-10', '2024-06-11', '2024-06-12'],
+        datasets: [{
+            label: 'Total Quantity',
+            data: [500, 600, 550],
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: { responsive: true }
+});
+
+// 2. Cutting Section - Pie Chart
+var cuttingChart = new Chart(cuttingCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Fabric A', 'Fabric B', 'Fabric C'],
+        datasets: [{
+            label: 'Fabric Distribution',
+            data: [30, 50, 20],
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+    },
+    options: { responsive: true }
+});
+
+// 3. Production Section - Waterfall Chart (using Bar Chart as simulation)
+var productionChart = new Chart(productionCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Raw Material', 'Processed', 'Final'],
+        datasets: [{
+            label: 'Waterfall Simulation',
+            data: [300, 450, 150],
+            backgroundColor: ['#4BC0C0', '#FF9F40', '#9966FF']
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { title: { display: true, text: 'Waterfall Graph (Simulation)' } }
+    }
+});
+
+// 4. Quality Section - Line Graph
+var qualityChart = new Chart(qualityCtx, {
+    type: 'line',
+    data: {
+        labels: ['2024-06-10', '2024-06-11', '2024-06-12'],
+        datasets: [{
+            label: 'Thread Usage',
+            data: [200, 300, 250],
+            borderColor: '#FF6384',
+            fill: false
+        }]
+    },
+    options: { responsive: true }
+});
+
+// 5. Finishing Section - Doughnut Chart
+var finishingChart = new Chart(finishingCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Packed', 'Unpacked'],
+        datasets: [{
+            label: 'Packing Status',
+            data: [70, 30],
+            backgroundColor: ['#36A2EB', '#FFCE56']
+        }]
+    },
+    options: { responsive: true }
+});
+
+// 6. Dispatch Section - Radar Chart
+var dispatchChart = new Chart(dispatchCtx, {
+    type: 'radar',
+    data: {
+        labels: ['Bottoms', 'Shirts', 'Jackets', 'Accessories'],
+        datasets: [{
+            label: 'Dispatch Overview',
+            data: [80, 90, 70, 60],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+        }]
+    },
+    options: { responsive: true }
+});
+
+</script>
+
+        <!-- Logout Button -->
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function validateLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "admin123") {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("loginFormPage").style.display = "none";
+                document.getElementById("dashboardPage").style.display = "block";
+                alert("Login successful!");
+            } else {
+                alert("Invalid Username or Password!");
+            }
+        }
+
+        function logout() {
+            document.getElementById("dashboardPage").style.display = "none";
+            document.getElementById("loginPage").style.display = "block";
+            document.getElementById("loginFormPage").style.display = "block";
+            alert("Logged out successfully!");
+        }
+    </script>
+</body>
+</html>
